@@ -25,11 +25,15 @@ export class CcListComponent implements OnInit {
   ngOnInit() {
     this.currentFiat = this.store.selectSnapshot(SettingsState.activeFiatCurrency);
 
-    this.loadList();
+    this.loadList(false);
   }
 
-  private loadList() {
-    this.store.dispatch(new FetchCryptocurrencyList(1, CcListComponent.PAGE_SIZE, this.currentFiat));
+  onRefreshBtnClicked(): void {
+    this.loadList(true);
+  }
+
+  private loadList(force: boolean) {
+    this.store.dispatch(new FetchCryptocurrencyList(1, CcListComponent.PAGE_SIZE, this.currentFiat, force));
   }
 
 }

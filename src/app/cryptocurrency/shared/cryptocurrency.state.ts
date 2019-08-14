@@ -28,7 +28,7 @@ export class CryptocurrencyState {
   fetchCryptocurrencyList(context: StateContext<CryptocurrencyStateModel>, action: FetchCryptocurrencyList) {
     const currentList = context.getState().list;
 
-    if (currentList && currentList.length >= 0) {
+    if (!action.force && currentList && currentList.length >= 0) {
       return;
     }
 
