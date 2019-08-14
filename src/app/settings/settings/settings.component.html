@@ -1,1 +1,6 @@
-<p>settings works!</p>
+<h1>Settings</h1>
+
+<label for="activeFiatCurrency">Active Fiat currency:</label>
+<select name="activeFiatCurrency" id="activeFiatCurrency" [(ngModel)]="activeFiatCurrency" (ngModelChange)="onSelectorChange()">
+  <option value="{{option.key}}" *ngFor="let option of fiatCurrencyEnum | keyvalue">{{option.key}}</option>
+</select>
