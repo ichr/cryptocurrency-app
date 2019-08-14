@@ -1,0 +1,10 @@
+{
+  "/api/coinmarketcap/v1/*": {
+    "target": "https://pro-api.coinmarketcap.com",
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/api/coinmarketcap": ""
+    }
+  }
+}
