@@ -6,9 +6,10 @@ import { CcListComponent } from './cc-list/cc-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxsModule } from '@ngxs/store';
 import { CryptocurrencyState } from './shared/cryptocurrency.state';
+import { CcDetailComponent } from './cc-detail/cc-detail.component';
 
 @NgModule({
-  declarations: [CcListComponent],
+  declarations: [CcListComponent, CcDetailComponent],
   imports: [
     CommonModule,
     HttpClientModule,

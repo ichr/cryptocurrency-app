@@ -1,0 +1,38 @@
+<h1>Cryptocurrency Detail</h1>
+
+<button type="button" (click)="onRefreshBtnClicked()">Refresh</button>
+
+<div *ngIf="cryptocurrencyDetails$ | async as ccObject">
+  <dl class="row">
+    <dt class="col-sm-3">Rank</dt>
+    <dd class="col-sm-9">{{ccObject.cmc_rank}}</dd>
+
+    <dt class="col-sm-3">Name</dt>
+    <dd class="col-sm-9">{{ccObject.name}}</dd>
+
+    <dt class="col-sm-3">Symbol</dt>
+    <dd class="col-sm-9">{{ccObject.symbol}}</dd>
+
+    <dt class="col-sm-3">Price ({{currentFiat}})</dt>
+    <dd class="col-sm-9">{{ccObject.getQuoteForCurrency(currentFiat).price}}</dd>
+
+    <dt class="col-sm-3">24h volume ({{currentFiat}})</dt>
+    <dd class="col-sm-9">{{ccObject.getQuoteForCurrency(currentFiat).volume_24h}}</dd>
+
+    <dt class="col-sm-3">Market capitalization ({{currentFiat}})</dt>
+    <dd class="col-sm-9">{{ccObject.getQuoteForCurrency(currentFiat).market_cap}}</dd>
+
+    <dt class="col-sm-3">Name</dt>
+    <dd class="col-sm-9">{{ccObject.name}}</dd>
+
+    <!--<dt class="col-sm-3">Price (BTC)</dt>
+    <dd class="col-sm-9">{{ccObject.getQuoteForCurrency('BTC').price}}</dd>-->
+
+    <dt class="col-sm-3">Total supply</dt>
+    <dd class="col-sm-9">{{ccObject.total_supply}}</dd>
+
+    <dt class="col-sm-3">Available supply</dt>
+    <dd class="col-sm-9">{{ccObject.max_supply}}</dd>
+  </dl>
+</div>
+

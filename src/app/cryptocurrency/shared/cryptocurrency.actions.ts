@@ -9,3 +9,13 @@ export class FetchCryptocurrencyList {
               public force: boolean
   ) {}
 }
+
+export class FetchCryptocurrencyDetail {
+  static readonly type = '[Cryptocurrency] FetchCryptocurrencyDetail';
+  constructor(public symbol: string,
+              public convert: string,
+              /**
+               * To force reload data from server
+               */
+              public force: boolean) {}
+}
