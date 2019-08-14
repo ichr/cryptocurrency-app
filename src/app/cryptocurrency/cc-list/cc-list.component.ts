@@ -15,7 +15,7 @@ import { map } from 'rxjs/operators';
 })
 export class CcListComponent implements OnInit {
 
-  static readonly PAGE_SIZE = 10;
+  static readonly PAGE_SIZE = 100;
 
   cryptocurrencies$: Observable<CryptocurrencyObject[]>;
 
