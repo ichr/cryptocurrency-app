@@ -1,1 +1,20 @@
-<p>cc-list works!</p>
+<h1>Top Cryptocurrencies</h1>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">Rank</th>
+    <th scope="col">Symbol</th>
+    <th scope="col">Price ({{currentFiat}})</th>
+    <th scope="col">24 hour change</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let cc of cryptocurrencies$ | async">
+    <th scope="row">{{cc.cmc_rank}}</th>
+    <td>{{cc.symbol}}</td>
+    <td></td>
+    <td></td>
+  </tr>
+  </tbody>
+</table>
