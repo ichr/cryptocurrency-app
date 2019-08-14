@@ -49,7 +49,7 @@ export class CcDetailComponent implements OnInit {
       .subscribe(() => {
         // NOTE: double fetch is needed because of: `plan is limited to 1 convert options` ERROR
         this.store.dispatch(new FetchCryptocurrencyDetail(this.selectedSymbol, this.BTC, force));
-      })
+      });
   }
 
   private initializeCryptocurrencyDetailsSelectors() {
@@ -59,7 +59,7 @@ export class CcDetailComponent implements OnInit {
 
     this.cryptocurrencyDetailsBtc$ = this.store
       .select(CryptocurrencyState.cryptocurrencyDetails)
-      .pipe(map(filterFn => filterFn(this.selectedSymbol, this.BTC)))
+      .pipe(map(filterFn => filterFn(this.selectedSymbol, this.BTC)));
   }
 
 }
