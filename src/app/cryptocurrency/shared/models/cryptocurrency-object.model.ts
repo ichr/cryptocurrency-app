@@ -1,5 +1,5 @@
 import { QuoteValue } from './quote-value.model';
-import { Deserializable } from '../../../core/models/deserializable.interface';
+import { Deserializable } from 'app/core/models/deserializable.interface';
 import { QuoteMap } from './quote-map.interface';
 
 export class CryptocurrencyObject implements Deserializable<CryptocurrencyObject> {

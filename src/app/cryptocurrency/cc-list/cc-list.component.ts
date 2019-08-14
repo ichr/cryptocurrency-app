@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
-import { SettingsState } from '../../settings/shared/settings.state';
+import { SettingsState } from 'app/settings/shared/settings.state';
 import { FetchCryptocurrencyList } from '../shared/cryptocurrency.actions';
-import { FiatCurrency } from '../../settings/settings/shared/fiat-currency.enum';
+import { FiatCurrency } from 'app/settings/settings/shared/fiat-currency.enum';
 import { CryptocurrencyState } from '../shared/cryptocurrency.state';
 import { Observable } from 'rxjs';
 import { CryptocurrencyObject } from '../shared/models/cryptocurrency-object.model';
