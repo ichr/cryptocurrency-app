@@ -13,8 +13,8 @@
   <tr *ngFor="let cc of cryptocurrencies$ | async">
     <th scope="row">{{cc.cmc_rank}}</th>
     <td>{{cc.symbol}}</td>
-    <td></td>
-    <td></td>
+    <td>{{cc.getQuoteForCurrency(currentFiat).price}}</td>
+    <td>{{cc.getQuoteForCurrency(currentFiat).percent_change_24h}}</td>
   </tr>
   </tbody>
 </table>

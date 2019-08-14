@@ -1,5 +1,6 @@
 import { QuoteValue } from './quote-value.model';
 import { Deserializable } from '../../../core/models/deserializable.interface';
+import { QuoteMap } from './quote-map.interface';
 
 export class CryptocurrencyObject implements Deserializable<CryptocurrencyObject> {
   id: number;
@@ -14,7 +15,11 @@ export class CryptocurrencyObject implements Deserializable<CryptocurrencyObject
   total_supply: number;
   cmc_rank: number;
   last_updated: Date;
-  quote: Map<string, QuoteValue>;
+  quote: QuoteMap;
+
+  getQuoteForCurrency(currency: string): QuoteValue {
+    return this.quote[currency];
+  }
 
   deserialize(object: any): CryptocurrencyObject {
     Object.assign(this, object);
