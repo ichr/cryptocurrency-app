@@ -16,10 +16,13 @@ import { map } from 'rxjs/operators';
 })
 export class CcDetailComponent implements OnInit {
 
+  readonly BTC = 'BTC';
+
   selectedSymbol: string;
   currentFiat: FiatCurrency;
 
-  cryptocurrencyDetails$: Observable<CryptocurrencyObject>;
+  cryptocurrencyDetailsCurrentFiat$: Observable<CryptocurrencyObject>;
+  cryptocurrencyDetailsBtc$: Observable<CryptocurrencyObject>;
 
   constructor(private store: Store,
               private route: ActivatedRoute) {
@@ -29,7 +32,7 @@ export class CcDetailComponent implements OnInit {
     this.route.paramMap
       .subscribe((params: ParamMap) => {
         this.selectedSymbol = params.get('symbol');
-        this.initializeCryptocurrencyDetailsSelector();
+        this.initializeCryptocurrencyDetailsSelectors();
         this.loadDetail(false);
       });
   }
@@ -41,13 +44,22 @@ export class CcDetailComponent implements OnInit {
   }
 
   private loadDetail(force: boolean): void {
-    this.store.dispatch(new FetchCryptocurrencyDetail(this.selectedSymbol, this.currentFiat, force));
+    this.store
+      .dispatch(new FetchCryptocurrencyDetail(this.selectedSymbol, this.currentFiat, force))
+      .subscribe(() => {
+        // NOTE: double fetch is needed because of: `plan is limited to 1 convert options` ERROR
+        this.store.dispatch(new FetchCryptocurrencyDetail(this.selectedSymbol, this.BTC, force));
+      })
   }
 
-  private initializeCryptocurrencyDetailsSelector() {
-    this.cryptocurrencyDetails$ = this.store
+  private initializeCryptocurrencyDetailsSelectors() {
+    this.cryptocurrencyDetailsCurrentFiat$ = this.store
       .select(CryptocurrencyState.cryptocurrencyDetails)
       .pipe(map(filterFn => filterFn(this.selectedSymbol, this.currentFiat)));
+
+    this.cryptocurrencyDetailsBtc$ = this.store
+      .select(CryptocurrencyState.cryptocurrencyDetails)
+      .pipe(map(filterFn => filterFn(this.selectedSymbol, this.BTC)))
   }
 
 }
