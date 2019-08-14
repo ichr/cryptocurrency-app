@@ -1,3 +1,4 @@
+/* tslint:disable:variable-name */
 export class QuoteValue {
   price: number;
   volume_24h: number;

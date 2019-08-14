@@ -2,6 +2,7 @@ import { QuoteValue } from './quote-value.model';
 import { Deserializable } from 'app/core/models/deserializable.interface';
 import { QuoteMap } from './quote-map.interface';
 
+/* tslint:disable:variable-name */
 export class CryptocurrencyObject implements Deserializable<CryptocurrencyObject> {
   id: number;
   name: string;

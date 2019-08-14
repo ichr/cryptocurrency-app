@@ -1,3 +1,4 @@
+/* tslint:disable:variable-name */
 export class Status {
   timestamp: Date;
   error_code: number;

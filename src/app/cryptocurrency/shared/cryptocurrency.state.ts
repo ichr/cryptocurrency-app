@@ -52,7 +52,7 @@ export class CryptocurrencyState {
     const currentListMap = context.getState().listMap;
 
     if (!action.force && currentListMap && currentListMap.has(action.convert)) {
-      console.debug("Found existing list for convert: ", action.convert);
+      console.log('Found existing list for convert: ', action.convert);
       return;
     }
 
@@ -74,7 +74,7 @@ export class CryptocurrencyState {
     const detailsMapKey = CryptocurrencyState.createMapKey(action.symbol, action.convert);
 
     if (!action.force && currentDetailsMap.has(detailsMapKey)) {
-      console.debug("Found existing detail for key: ", detailsMapKey);
+      console.log('Found existing detail for key: ', detailsMapKey);
       return;
     }
 
